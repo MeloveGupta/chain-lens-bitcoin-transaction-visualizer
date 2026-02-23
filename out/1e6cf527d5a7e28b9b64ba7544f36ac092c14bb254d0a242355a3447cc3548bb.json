@@ -1,0 +1,68 @@
+{
+  "ok": true,
+  "network": "mainnet",
+  "segwit": true,
+  "txid": "1e6cf527d5a7e28b9b64ba7544f36ac092c14bb254d0a242355a3447cc3548bb",
+  "wtxid": "e045c3c464ad3c9df0e568ccb6adc43ee76fdb12408b8ada31262a6e76cd6b57",
+  "version": 2,
+  "locktime": 0,
+  "size_bytes": 234,
+  "weight": 609,
+  "vbytes": 153,
+  "total_input_sats": 20000,
+  "total_output_sats": 15000,
+  "fee_sats": 5000,
+  "fee_rate_sat_vb": 32.68,
+  "rbf_signaling": false,
+  "locktime_type": "none",
+  "locktime_value": 0,
+  "segwit_savings": {
+    "witness_bytes": 109,
+    "non_witness_bytes": 125,
+    "total_bytes": 234,
+    "weight_actual": 609,
+    "weight_if_legacy": 936,
+    "savings_pct": 34.94
+  },
+  "vin": [
+    {
+      "txid": "2222222222222222222222222222222222222222222222222222222222222222",
+      "vout": 1,
+      "sequence": 4294967294,
+      "script_sig_hex": "",
+      "script_asm": "",
+      "witness": [
+        "1e5180f383a5dcf31ae239e5999f8e6bc8928cd7bbc6c47dc0c596703d009d141c49d1197302d0e4af7dad5035654059faffed5bce60ffbe83a313b957168e894a497524e0a5b4",
+        "b7934f06d9b55e5d766c1766e4958d7fde1d6c81cdc0dd99e07d65ea8642d86b90"
+      ],
+      "script_type": "p2wpkh",
+      "address": "bc1qq5zs2pg9q5zs2pg9q5zs2pg9q5zs2pg94a749m",
+      "prevout": {
+        "value_sats": 20000,
+        "script_pubkey_hex": "00140505050505050505050505050505050505050505"
+      },
+      "relative_timelock": {
+        "enabled": false
+      }
+    }
+  ],
+  "vout": [
+    {
+      "n": 0,
+      "value_sats": 10000,
+      "script_pubkey_hex": "00140303030303030303030303030303030303030303",
+      "script_asm": "OP_0 OP_PUSHBYTES_20 0303030303030303030303030303030303030303",
+      "script_type": "p2wpkh",
+      "address": "bc1qqvpsxqcrqvpsxqcrqvpsxqcrqvpsxqcr5ac3gx"
+    },
+    {
+      "n": 1,
+      "value_sats": 5000,
+      "script_pubkey_hex": "51200404040404040404040404040404040404040404040404040404040404040404",
+      "script_asm": "OP_1 OP_PUSHBYTES_32 0404040404040404040404040404040404040404040404040404040404040404",
+      "script_type": "p2tr",
+      "address": "bc1pqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqgpqyqszqa6fqz5"
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,61 @@
+{
+  "ok": true,
+  "network": "mainnet",
+  "segwit": false,
+  "txid": "b63352b92ae590abe04ec9f913e349858c0985046f1bbe82d6cf66548f0755a2",
+  "wtxid": null,
+  "version": 2,
+  "locktime": 0,
+  "size_bytes": 104,
+  "weight": 416,
+  "vbytes": 104,
+  "total_input_sats": 2000,
+  "total_output_sats": 1200,
+  "fee_sats": 800,
+  "fee_rate_sat_vb": 7.69,
+  "rbf_signaling": false,
+  "locktime_type": "none",
+  "locktime_value": 0,
+  "segwit_savings": null,
+  "vin": [
+    {
+      "txid": "1111111111111111111111111111111111111111111111111111111111111111",
+      "vout": 0,
+      "sequence": 4294967295,
+      "script_sig_hex": "",
+      "script_asm": "",
+      "witness": [],
+      "script_type": "p2pkh",
+      "address": "1BcktgV7EjHmxEwQDFFhhztzNqZkd5gdm",
+      "prevout": {
+        "value_sats": 2000,
+        "script_pubkey_hex": "76a914020202020202020202020202020202020202020288ac"
+      },
+      "relative_timelock": {
+        "enabled": false
+      }
+    }
+  ],
+  "vout": [
+    {
+      "n": 0,
+      "value_sats": 1200,
+      "script_pubkey_hex": "76a914010101010101010101010101010101010101010188ac",
+      "script_asm": "OP_DUP OP_HASH160 OP_PUSHBYTES_20 0101010101010101010101010101010101010101 OP_EQUALVERIFY OP_CHECKSIG",
+      "script_type": "p2pkh",
+      "address": "16Jswqk47s9PUcyCc88MMVwzgvHPvtEpf"
+    },
+    {
+      "n": 1,
+      "value_sats": 0,
+      "script_pubkey_hex": "6a08736f622d32303236",
+      "script_asm": "OP_RETURN OP_PUSHBYTES_8 736f622d32303236",
+      "script_type": "op_return",
+      "address": null,
+      "op_return_data_hex": "736f622d32303236",
+      "op_return_data_utf8": "sob-2026",
+      "op_return_protocol": "unknown"
+    }
+  ],
+  "warnings": []
+}

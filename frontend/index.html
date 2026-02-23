@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chain Lens — Bitcoin Transaction Analyzer</title>
+  <meta name="description"
+    content="Analyze Bitcoin transactions and blocks with visual diagrams and plain-English explanations.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ─── Header ─── -->
+  <div class="header">
+    <div class="logo">
+      <svg viewBox="0 0 100 100" fill="currentColor">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="6" />
+        <text x="50" y="68" text-anchor="middle" font-size="48" font-weight="bold" fill="currentColor">₿</text>
+      </svg>
+      Chain Lens
+    </div>
+    <div class="header-nav">
+      <button class="nav-btn active" id="nav-tx" onclick="switchMode('tx')">Transaction</button>
+      <button class="nav-btn" id="nav-block" onclick="switchMode('block')">Block</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ─── Transaction Input ─── -->
+    <div id="tx-input" class="input-section">
+      <h2>📋 Transaction Fixture</h2>
+      <textarea id="fixture-input" placeholder='Paste your transaction fixture JSON here…
+
+{
+  "network": "mainnet",
+  "raw_tx": "0200000001...",
+  "prevouts": [{ "txid": "...", "vout": 0, "value_sats": 123456, "script_pubkey_hex": "..." }]
+}'></textarea>
+      <div class="btn-group">
+        <button class="btn btn-primary" id="btn-analyze-tx" onclick="analyzeTransaction()">🔍 Analyze
+          Transaction</button>
+        <button class="btn btn-secondary" onclick="loadSample()">📄 Load Sample</button>
+      </div>
+    </div>
+
+    <!-- ─── Block Input ─── -->
+    <div id="block-input" class="input-section" style="display:none">
+      <h2>📦 Block Files</h2>
+      <div class="file-inputs">
+        <div class="file-input-wrapper" id="blk-wrap">
+          <input type="file" id="blk-file" onchange="updateFileName(this,'blk-name','blk-wrap')">
+          <div class="file-label">blk*.dat</div>
+          <div class="file-name" id="blk-name">Drop or click</div>
+        </div>
+        <div class="file-input-wrapper" id="rev-wrap">
+          <input type="file" id="rev-file" onchange="updateFileName(this,'rev-name','rev-wrap')">
+          <div class="file-label">rev*.dat</div>
+          <div class="file-name" id="rev-name">Drop or click</div>
+        </div>
+        <div class="file-input-wrapper" id="xor-wrap">
+          <input type="file" id="xor-file" onchange="updateFileName(this,'xor-name','xor-wrap')">
+          <div class="file-label">xor.dat</div>
+          <div class="file-name" id="xor-name">Drop or click</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="btn-analyze-block" onclick="analyzeBlock()">📦 Analyze Block</button>
+    </div>
+
+    <!-- ─── Loading ─── -->
+    <div id="loading" class="loading" style="display:none">
+      <p><span class="spinner"></span> Analyzing… this may take a moment for large blocks.</p>
+    </div>
+
+    <!-- ─── Error ─── -->
+    <div id="error-display"></div>
+
+    <!-- ════════════════════════════════════════════════════════
+         Transaction Result
+         ════════════════════════════════════════════════════════ -->
+    <div id="result">
+      <!-- Story narrative -->
+      <div id="story-narrative" class="story-narrative"></div>
+
+      <!-- Metric cards -->
+      <div id="metrics-grid" class="metrics-grid"></div>
+
+      <!-- Warnings -->
+      <div id="warnings-section" class="warnings-bar"></div>
+
+      <!-- Flow graph: inputs → outputs + fee -->
+      <div class="flow-section">
+        <h2>💰 Value Flow</h2>
+        <div id="flow-graph" class="flow-graph"></div>
+      </div>
+
+      <!-- SegWit savings -->
+      <div id="segwit-section" class="details-section" style="display:none">
+        <div class="details-header" onclick="toggleDetails(this)">
+          <h3>📊 SegWit Discount Visualization</h3><span>▼</span>
+        </div>
+        <div class="details-body open" id="segwit-body"></div>
+      </div>
+
+      <!-- Technical details (hidden by default) -->
+      <div class="details-section">
+        <div class="details-header" onclick="toggleDetails(this)">
+          <h3>🔧 Show Technical Details</h3><span>▼</span>
+        </div>
+        <div class="details-body" id="tech-details"></div>
+      </div>
+
+      <!-- Inputs detail -->
+      <div class="details-section">
+        <div class="details-header" onclick="toggleDetails(this)">
+          <h3>📥 Inputs</h3><span>▼</span>
+        </div>
+        <div class="details-body" id="inputs-detail"></div>
+      </div>
+
+      <!-- Outputs detail -->
+      <div class="details-section">
+        <div class="details-header" onclick="toggleDetails(this)">
+          <h3>📤 Outputs</h3><span>▼</span>
+        </div>
+        <div class="details-body" id="outputs-detail"></div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════
+         Block Result
+         ════════════════════════════════════════════════════════ -->
+    <div id="block-result">
+      <!-- Story -->
+      <div id="block-story" class="story-narrative"></div>
+
+      <!-- Overview cards -->
+      <div id="block-overview" class="metrics-grid"></div>
+
+      <!-- Transaction list (expandable) -->
+      <div class="details-section">
+        <div class="details-header" onclick="toggleDetails(this)">
+          <h3>📋 Transactions</h3><span>▲</span>
+        </div>
+        <div class="details-body open" id="block-tx-list"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
