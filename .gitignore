@@ -2,3 +2,4 @@ fixtures/blocks/*.dat
 fixtures/blocks/*.dat.gz
 fixtures/blocks/*.rev
 fixtures/blocks/*.rev.gz
+fixtures/blocks/
